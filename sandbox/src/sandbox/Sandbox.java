@@ -5,7 +5,7 @@
  */
 package sandbox;
 
-import byui.cit260.potterheads.view.StartProgramView;
+import sandbox.view.StartProgramView;
 
 /**
  *

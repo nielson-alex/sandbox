@@ -6,7 +6,7 @@
 /*along with a brief description of the game and the Main Menu. An error message is displayed if
 /*the user enters an invalid name or command.
  */
-package byui.cit260.potterheads.view;
+package sandbox.view;
 
 import java.util.Scanner;
 

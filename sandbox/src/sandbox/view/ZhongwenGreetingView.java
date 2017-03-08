@@ -28,6 +28,7 @@ public class ZhongwenGreetingView {
             if (chineseName.toUpperCase().equals("Q")) {
                 return;
             }
+            
             done = this.doAction(chineseName);
         } while (!done);
     }
@@ -53,9 +54,54 @@ public class ZhongwenGreetingView {
         return value;
     }
 
-    boolean doAction(String chineseName) {//prompt to greet user in Chinese and get their name
+    public boolean doAction(String chineseName) {//prompt to greet user in Chinese and get their name
+        boolean done = false;
+        
         System.out.println("\n" + chineseName + "我很高兴认识你！");
-
+        
+        do {
+            String age = this.getAge();
+           
+            
+            done = this.displayAge(Double.parseDouble(age));
+            
+        } while (!done);
         return false;
+    }
+    
+    public String getAge() {
+        Scanner keyboard = new Scanner(System.in); // get infile for keyboard 
+        String value = ""; //value to be returned
+        boolean valid = false; // initialize to not valid
+        
+        String askAge = "\n好的。那你多大？";
+        
+        
+        while (!valid) {
+            System.out.println(askAge);
+            
+            value = keyboard.nextLine();
+            
+            double askAgeD = Double.parseDouble(value);
+            
+            if (askAgeD < 1) {
+                System.out.println("\nYour age cannnot be less than one character.");
+                continue;
+        } break;
+        }
+        return value;
+    }
+    
+    public boolean displayAge(double askAgeD) {
+            boolean done = false;
+            
+            System.out.println("\nso you are" + askAgeD + " years old?");
+            
+            return false;
+            
+            
+}
+    public void endProgram() {
+        return;
     }
 }

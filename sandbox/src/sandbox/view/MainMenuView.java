@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.potterheads.view;
+package sandbox.view;
 
 import java.util.Scanner;
 import sandbox.view.CurrencyConversionView;
@@ -23,6 +23,7 @@ public class MainMenuView {
                 + "been learning in Java. It's not much but I hope you like it!\n\n"
                 + "C - Currency Conversion\n"
                 + "Z - Chinese Greeting\n"
+                + "A - Create Array\n"
                 + "O - Other\n"
                 + "Q - Quit";
     }
@@ -71,6 +72,8 @@ public class MainMenuView {
                 break;
             case "Z":
                 this.displayZhongwenGreeting();
+            case "A":
+                this.displayCreateArray();
             case "O":
                 this.displayOtherView();
                 break;
@@ -95,6 +98,12 @@ public class MainMenuView {
     private void displayZhongwenGreeting() {
         ZhongwenGreetingView zhongwenGreetingView = new ZhongwenGreetingView();
         zhongwenGreetingView.displayZhongwenGreetingView();
+    }
+    
+    // case "A"
+    private void displayCreateArray() {
+        CreateArrayView createArrayView = new CreateArrayView();
+        createArrayView.displayCreateArrayView();
     }
     
     private void displayOtherView() {
