@@ -72,8 +72,10 @@ public class MainMenuView {
                 break;
             case "Z":
                 this.displayZhongwenGreeting();
+                break;
             case "A":
                 this.displayCreateArray();
+                break;
             case "O":
                 this.displayOtherView();
                 break;
@@ -106,6 +108,7 @@ public class MainMenuView {
         createArrayView.displayCreateArrayView();
     }
     
+    // case "O"
     private void displayOtherView() {
         System.out.println("\n***displayOtherView() function called***");
     }
