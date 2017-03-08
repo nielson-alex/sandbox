@@ -13,60 +13,23 @@ import sandbox.view.ZhongwenGreetingView;
  *
  * @author aleecrook
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
-    private String menu;
-
-    //private String promptMessage;
     public MainMenuView() {
-        this.menu = "\nThis is where I get to show off a few of the things I've\n"
+        super("\nThis is where I get to show off a few of the things I've\n"
                 + "been learning in Java. It's not much but I hope you like it!\n\n"
                 + "C - Currency Conversion\n"
                 + "Z - Chinese Greeting\n"
                 + "A - Create Array\n"
                 + "O - Other\n"
-                + "Q - Quit";
+                + "Q - Quit");
     }
 
-    public void displayMainMenuView() {
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) {
-                return;
-            }
+    @Override
+    public boolean doAction(String value) {
+        value = value.toUpperCase();
 
-            done = this.doAction(menuOption);
-
-        } while (!done);
-    }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard 
-        String value = ""; //value to be returned
-        boolean valid = false; // initialize to not valid
-
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println("\n" + this.menu);
-
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-
-            break; // end the loop
-        }
-
-        return value; // return the value entered
-    }
-
-    boolean doAction(String choice) {
-        choice = choice.toUpperCase();
-
-        switch (choice) {
+        switch (value) {
             case "C":
                 this.displayCurrencyConversion();
                 break;
@@ -93,13 +56,13 @@ public class MainMenuView {
     // case "C"
     private void displayCurrencyConversion() {
         CurrencyConversionView currencyConversionView = new CurrencyConversionView();
-        currencyConversionView.displayCurrencyConversionView();
+        currencyConversionView.display();
     }
     
     // case "Z"
     private void displayZhongwenGreeting() {
         ZhongwenGreetingView zhongwenGreetingView = new ZhongwenGreetingView();
-        zhongwenGreetingView.displayZhongwenGreetingView();
+        zhongwenGreetingView.display();
     }
     
     // case "A"

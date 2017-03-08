@@ -14,19 +14,10 @@ import java.util.Scanner;
  *
  * @author Alexandra
  */
-public class StartProgramView {
-
-    private String promptMessage;
+public class StartProgramView extends View {
 
     public StartProgramView() {
-        this.promptMessage = "\nWelcome to my sandbox! What's your name?\n";
-        // display the banner when view is created
-        this.displayBanner();
-
-    }
-
-    private void displayBanner() {
-        System.out.println(
+        super(
                   "\n_____________________________________________________________________________________\n"        
                 + "                                                                                        \n"
                 + "                                                                                      \n"
@@ -43,65 +34,35 @@ public class StartProgramView {
                 + "'--'.     /;  :   .'   \\|   |/      |   :    :||   :    |  `----' |   :/\\  \\ ;        \n"
                 + "  `--'---' |  ,     .-./'---'        \\   \\  /  /    \\  /          `---'  `--`         \n"
                 + "            `--`---'                  `----'   `-'----'                               \n"
-                + "_______________________________________________________________________________________");
+                + "_______________________________________________________________________________________\n\n"
+                + "Welcome to my sandbox! This is a simple Java program that showcases some of the Java concepts\n"
+                + "and principles I've been learning. Press 'c' to continue.");
 
     }
 
-    public void displayStartProgramView() {
+    @Override
+    public boolean doAction(String value) {
+        boolean done = false;
+        
+        while (!done) {
+            if ("C".equals(value.toUpperCase())) {
+                this.displayMainMenu();
+                break;
+            } else if (value.length() < 1) {
+                System.out.println("\n*** Invalid: value cannot be blank ***");
+            } else if (!("C".equals(value.toUpperCase()))) {
+                System.out.println("\n*** Invalid: please press 'C' to continue ***");
 
-        boolean done = false; // set flag to not done
-        do {
-            //prompt for and get guestsName
-            String guestsName = this.getGuestsName();
-            if (guestsName.toUpperCase().equals("Q")) // user wants to quit
-            {
-                return;
+                return false;
             }
-
-            //do requested action and display next view
-            done = this.doAction(guestsName);
-
-            //while the view is not done
-        } while (!done);
-    }
-
-    private String getGuestsName() {
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard 
-        String value = ""; //value to be returned
-        boolean valid = false; // initialize to not valid
-
-        while (!valid) { // loop while an invalid value is entered
-            System.out.println("\n" + this.promptMessage);
-
-            value = keyboard.nextLine(); // get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
-                continue;
-            }
-
-            break; // end the loop
-        }
-
-        return value;
-                 // return the value entered
-    }
-
-    private boolean doAction(String guestsName) {
-        if (guestsName.length() < 2) {
-            System.out.println("\nInvalid name: "
-                    + "The name must be greater than one character in length.");
-            return false;
         }
 
         // display next view
-        this.displayMainMenu();
         return true;
     }
 
     private void displayMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMainMenuView();
+        mainMenuView.display();
     }
 }
