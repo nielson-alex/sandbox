@@ -68,7 +68,7 @@ public class MainMenuView extends View {
     // case "A"
     private void displayCreateArray() {
         CreateArrayView createArrayView = new CreateArrayView();
-        createArrayView.displayCreateArrayView();
+        createArrayView.display();
     }
     
     // case "O"

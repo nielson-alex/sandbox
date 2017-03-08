@@ -19,7 +19,13 @@ public class Item implements Serializable {
     private int quantity;
 
     // constructor function
-    public Item(String description, int quantity) {
+    public Item() {
+    }
+    
+    public Item(String description, String inventoryType, int quantity) {
+        setDescription(description);
+        setInventoryType(inventoryType);
+        setQuantity(quantity);
     }
 
     // getter and setter
